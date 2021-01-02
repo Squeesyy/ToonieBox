@@ -84,7 +84,7 @@ while continue_reading:
                
                 pygame.mixer.music.play(0,timestamp[int(brug[brug.find(';')+1:])]) # abspielend es Liedes mit ZEitpunkt, welher in timestamplsite eingetragen ins
                 paused = False
-                print "unpausert"
+                print "unpausiert"
                 while not card_removed: #check ob RFID-Chip weg ist
                    (status,TagType) = MIFAREReader.MFRC522_Request(MIFAREReader.PICC_REQIDL)
                    print pygame.mixer.music.get_pos()
@@ -103,7 +103,7 @@ while continue_reading:
                        card_removed_counter = 5
             else:
                 #brug = timestamp[i+1]
-                print "hi" # kein passende ID in der Liste gefunden
+                print "keine id gefunden" # kein passende ID in der Liste gefunden
                 
             
             
