@@ -21,12 +21,19 @@ for key in songliststrings.keys():
 del songliststrings
 
 
-with open('timestamps.json') as timestamp_json:
+# This code will avoid problems when our timestamp JSON doesn't exist yet.
+try:
+    timestamp_json = open('timestamps.json')
     timestampliststrings = json.load(timestamp_json)
 
-for key in timestampliststrings.keys():
-    timestamplist[int(key)] = float(timestampliststrings[key])
-del timestampliststrings
+    for key in timestampliststrings.keys():
+        timestamplist[int(key)] = float(timestampliststrings[key])
+    del timestampliststrings
+except IOError:
+    print('File not existent!')
+finally:
+    timestamp_json.close()
+
 
 
 # This takes our songlist and adds a timestamp for UIDs which are in the songlist, but not in the timestampList (which must mean that they were newly added)
