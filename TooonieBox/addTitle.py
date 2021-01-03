@@ -61,19 +61,12 @@ while True:
 
         bsUID = uid[0] << 24 + uid[1] << 16 + uid[2] << 8 + uid[3] << 0
         print("Card read UID: %s" % bsUID)
-
-        # Es wird geguckt ob die gelesene ID dieselbe Zahlenfolge wie ein Listeneintrag hat.
-        # Wenn nicht, fahre fort.
-        if bsUID not in songlist:
-            songlist[bsUID] = filename
-            with open('songs.json', 'w') as song_json:
-                json.dump(songlist, song_json)
-            message = 'Added file %s and associated it with the Chip UID %s' % (filename, bsUID)
-            os.system('git add Musik/%s' % filename)
-            os.system('git commit -m \'%s\'' message)
-            os.system('git pull')
-            os.system('git push')
-            print(message)
-
-        else:
-            print("This tag is already used in the songs file!")
+        songlist[bsUID] = filename
+        with open('songs.json', 'w') as song_json:
+            json.dump(songlist, song_json)
+        message = 'Added file %s and associated it with the Chip UID %s' % (filename, bsUID)
+        os.system('git add ./Toooniebox/Musik/%s' % filename)
+        os.system('git commit -m \'%s\'' message)
+        os.system('git pull')
+        os.system('git push')
+        print(message)
