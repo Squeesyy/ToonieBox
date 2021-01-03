@@ -71,6 +71,9 @@ while True:
             message = 'Added file %s and associated it with the Chip UID %s' % (filename, bsUID)
             os.system('git add Musik/%s' % filename)
             os.system('git commit -m \'%s\'' message)
+            os.system('git pull')
+            os.system('git push')
+            print(message)
 
         else:
             print("This tag is already used in the songs file!")
