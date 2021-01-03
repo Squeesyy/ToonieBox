@@ -37,7 +37,7 @@ After=multi-user.target
 ExecStart=/usr/bin/python3 /home/TooonieBox/main.py
 
 [Install]
-WantedBy=multi-user.target" > TooonieBox.service
+WantedBy=multi-user.target" > toooniebox.service
 
 sudo apt-get install python3-rpi.gpio -y
 

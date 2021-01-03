@@ -95,7 +95,7 @@ while continue_reading:
         print("Card read UID: %s" % bsUID)
 
         # Es wird geguckt ob die gelesene ID dieselbe Zahlenfolge, wie ein Listeneintrag hat
-        if bsUID in uid:
+        if bsUID in songlist:
             pygame.mixer.music.load(songlist[bsUID])
             pygame.mixer.music.set_volume(0.1)  # setzten der Lautstärke
 
