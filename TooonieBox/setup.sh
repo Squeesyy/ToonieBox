@@ -44,3 +44,5 @@ sudo apt-get install python3-rpi.gpio -y
 python3 -m pip install -U pygame
 
 sudo apt-get install git -y
+
+sudo reboot
