@@ -6,7 +6,7 @@ Zum Installieren bitte den folgenden Kommandos ausführen:
 
 ```wget -O - "https://raw.githubusercontent.com/Squeesyy/ToonieBox/main/TooonieBox/setup.sh" | sudo bash```
 
-Das Skript wird alle benötigten Dependencies installieren, und automatische Updates mithilfe von cron durchführen. Diese werden um 9 Uhr morgens erfolgen, woaufhin der Pi einmal neustarten wird. 
+Das Skript wird alle benötigten Dependencies installieren, und automatische Updates mithilfe von cron durchführen. Diese werden um 9 Uhr morgens erfolgen, woraufhin der Pi einmal neustarten wird. 
 Dabei werden auch die aktuellsten Dateien aus dem GitHub Repo mithilfe von git heruntergeladen, was auch die Audiodateien beinhaltet.
 
 ## Verwendung
