@@ -1,7 +1,7 @@
 # TooonieBox
 Dies ist eine einfache version einer Tooniebox. 
 ## Vorbereitung
-Benötigt wird ein Raspberry Pi 3 mit Python, ein MFRC522, der per SPI angeschlossen ist, und einige RFID-Chips.
+Benötigt wird ein Raspberry Pi mit Python 3, ein MFRC522, der per SPI angeschlossen ist, und einige RFID-Chips.
 Zum Installieren bitte den folgenden Kommandos ausführen:
 
 ```wget -O - "https://raw.githubusercontent.com/Squeesyy/TooonieBox/main/TooonieBox/setup.sh" | sudo bash```
@@ -14,4 +14,7 @@ Einfach wie eine Tooniebox. Zum Pausieren muss die Figur vom Leser genommen werd
 
 ## Hinzufügen von Titeln
 Die Datei, die hochgeladen wird, kann eintweder eine MP3 oder OGG sein. Unterstützung für MP3s ist limitiert und kann auf machen Systemen zu Problemen führen. 
-Im Moment muss man noch die Audiodatei manuell in die JSON-Datei eintragen, und der UID des RFID-Chips zuordnen. Es ist aber ein Skript geplant, mit dem man Dateien mehr oder weniger automatisch hinzufügen kann.
+Zum hinzufügen von Titeln bitte das Skript 'addTitle.py' ausführen, **nachdem** die zugehörige Audiodatei in den Order 'Musik' verschoben wurde. 
+Wenn man das Skript ausführt, wird man gebeten, den exakten Dateinamen einzugeben (Bitte zwischen Groß- und Kleinbuchstaben unterscheiden, und die Dateiendung mit eingeben!). 
+Danach hat man eine Minute Zeit, um den RFID-Chip aufzulegen.
+Wenn ein schon vergebener Chip verwendet wird, bekommt dieser einfach eine neue Datei zugeordnet, und die zugehörige Timestamp gelöscht.
