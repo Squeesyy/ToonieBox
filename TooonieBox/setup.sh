@@ -8,7 +8,8 @@ fi
 cd ~
 
 # clone the github repo to the home directory of the executing user
-git clone https://github.com/Squeesyy/TooonieBox
+git clone https://github.com/Squeesyy/TooonieBox -b dev
+# TODO Remove this when doing the merge!
 
 # write current crontab to temporary file
 crontab -l > tempcrontab
@@ -41,3 +42,5 @@ WantedBy=multi-user.target" > TooonieBox.service
 sudo apt-get install python3-rpi.gpio -y
 
 python3 -m pip install -U pygame
+
+sudo apt-get install git -y
