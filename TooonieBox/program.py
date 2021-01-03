@@ -6,21 +6,33 @@ import time
 import json
 # Here, we use a dictionary which allows us to do a one-direction lookup, where we use uidlist[<identifier>] to get the value assigned to <identifier>
 # We open the JSON file that this is stored in, and parse it into a dictionary. Same goes for the timestamplist.
-with open('songs.json') as song_json:
-    songlist = json.load(song_json.read(), cls=Decoder)
+# Unfortunately, our function to store the json data converts all keys to Strings, and I don't want to write a custom JSON decoder.
+# So I simply iterate through the list, convert everything and store it in a second list. It is not elegant, but it works reliably.
 
-songlist = {168198678: 'Freinds.mp3', 735411228: 'Happier.mp3',
-            2282027179: 'HereWithMe.mp3', 67311618: 'HereWithMe.mp3'}    # UID der RIFD-Chips
-# TODO Add a function to load the timestamps from a file!
+songlist = {}
+timestamplist = {}
+
+# This 'with open' handles opening and closing the file for us
+with open('songs.json') as song_json:
+    songliststrings = json.load(song_json)
+
+for key in songliststrings.keys():
+    songlist[int(key)] = songliststrings[key]
+del songliststrings
+
 
 with open('timestamps.json') as timestamp_json:
-    timestamplist = json.loads(timestamp_json.read())
+    timestampliststrings = json.load(timestamp_json)
+
+for key in timestampliststrings.keys():
+    timestamplist[int(key)] = float(timestampliststrings[key])
+del timestampliststrings
+
 
 # This takes our songlist and adds a timestamp for UIDs which are in the songlist, but not in the timestampList (which must mean that they were newly added)
 for key in list(songlist.keys()):
     if key not in timestamplist:
         timestamplist[key] = 0
-timestamp = [0] * 99     # Stopppositionen der Lieder
 
 paused = True
 pygame.mixer.init()
@@ -32,7 +44,7 @@ card_removed = False
 card_removed_counter = 5
 
 
-def end_read(signal, frame):  # end nachricht nachAbbruch
+def end_read(signal, frame):
     global continue_reading
     print("Ctrl+C captured, ending read.")
     continue_reading = False
@@ -61,8 +73,8 @@ while continue_reading:
         card_removed = False
 
         # Print UID
-        # Because we are using a Dictionary, we can skip iterating through the list.
-        # for i in range(0,len(uidlist)):
+        # Because we are using a Dictionary, 
+        # we can skip iterating through the list and instead just use the dictionary as a lookup table
 
         print(len(songlist))
 
@@ -77,7 +89,6 @@ while continue_reading:
 
         # Es wird geguckt ob die gelesene ID dieselbe Zahlenfolge, wie ein Listeneintrag hat
         if bsUID in uid:
-            # wenn gefunden dann wir aus dem listeneintrag die letzte Zahl genommen und nach der URl in dem Musikverzeichnis geguckt
             pygame.mixer.music.load(songlist[bsUID])
             pygame.mixer.music.set_volume(0.1)  # setzten der Lautstärke
 
@@ -99,8 +110,7 @@ while continue_reading:
                         card_removed = True
 
                         if pygame.mixer.music.get_pos() != -1:
-                            timestamplist[bsUID] += (
-                                pygame.mixer.music.get_pos() / 1000)
+                            timestamplist[bsUID] += pygame.mixer.music.get_pos() / 1000
                             # timestamp wird gesetzt
                         else:
                             # wichtige Ausnahme!!! pos wird -1 wenn lied vorbei ist

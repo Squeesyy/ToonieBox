@@ -38,6 +38,6 @@ ExecStart=/usr/bin/python3 /home/TooonieBox/program.py
 [Install]
 WantedBy=multi-user.target" > TooonieBox.service
 
-sudo apt install python3-rpi.gpio 
+sudo apt-get install python3-rpi.gpio -y
 
 python3 -m pip install -U pygame
