@@ -13,7 +13,7 @@ songlist = {}
 timestamplist = {}
 
 # This 'with open' handles opening and closing the file for us
-with open('songs.json') as song_json:
+with open('/root/TooonieBox/ToonieBox/songs.json') as song_json:
     songliststrings = json.load(song_json)
 
 for key in songliststrings.keys():
@@ -23,7 +23,7 @@ del songliststrings
 
 # This code will avoid problems when our timestamp JSON doesn't exist yet.
 try:
-    timestamp_json = open('timestamps.json')
+    timestamp_json = open('/root/TooonieBox/ToonieBox/timestamps.json')
     timestampliststrings = json.load(timestamp_json)
 
     for key in timestampliststrings.keys():
