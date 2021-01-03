@@ -86,3 +86,4 @@ while True:
             timestamp[bsUID] = 0
             with open('timestamps.json', 'w') as timestamp_json:
                 json.dump(timestamplist, timestamp_json)
+os.system('sudo service tooniebox start')
