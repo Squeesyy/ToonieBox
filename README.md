@@ -11,3 +11,7 @@ Dabei werden auch die aktuellsten Dateien aus dem GitHub Repo mithilfe von git h
 
 ## Verwendung
 Einfach wie eine Tooniebox. Zum Pausieren muss die Figur vom Leser genommen werden.
+
+## Hinzufügen von Titeln
+Die Datei, die hochgeladen wird, kann eintweder eine MP3 oder OGG sein. Unterstützung für MP3s ist limitiert und kann auf machen Systemen zu Problemen führen. 
+Im Moment muss man noch die Audiodatei manuell in die JSON-Datei eintragen, und der UID des RFID-Chips zuordnen. Es ist aber ein Skript geplant, mit dem man Dateien mehr oder weniger automatisch hinzufügen kann.
