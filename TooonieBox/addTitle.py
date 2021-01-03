@@ -70,3 +70,19 @@ while True:
         os.system('git pull')
         os.system('git push')
         print(message)
+        if bsUID in songlist:
+            timestamp = {}
+            try:
+                timestamp_json = open('timestamps.json')
+                timestampliststrings = json.load(timestamp_json)
+
+                    for key in timestampliststrings.keys():
+                        timestamplist[int(key)] = float(timestampliststrings[key])
+                    del timestampliststrings
+            except IOError:
+                print('')
+            finally:
+                timestamp_json.close()
+            timestamp[bsUID] = 0
+            with open('timestamps.json', 'w') as timestamp_json:
+                json.dump(timestamplist, timestamp_json)
