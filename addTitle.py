@@ -3,10 +3,11 @@ import RPi.GPIO as GPIO
 import MFRC522
 import signal
 import time
+import json
 
 os.system('sudo service tooniebox stop')
 print('In case you did not already do that, please move the new audio file to the \'Musik\' directory, otherwise you will have to manually upload it to the GitHub repo.')
-input('Press Enter to continue...')
+egal = input('Press Enter to continue...')
 filename = input('Please enter the filename in the correct case and with its file extension: ')
 print('You must now bring the chip near the RFID reader. You have one miute to do so.')
 
@@ -66,24 +67,24 @@ while True:
             json.dump(songlist, song_json)
         message = 'Added file %s and associated it with the Chip UID %s' % (filename, bsUID)
         os.system('git add ./Toooniebox/Musik/%s' % filename)
-        os.system('git commit -m \'%s\'' message)
+        os.system('git commit -m \'%s\'' % message)
         os.system('git pull')
         os.system('git push')
         print(message)
         if bsUID in songlist:
-            timestamp = {}
+            timestamplist = {}
             try:
                 timestamp_json = open('timestamps.json')
                 timestampliststrings = json.load(timestamp_json)
 
-                    for key in timestampliststrings.keys():
-                        timestamplist[int(key)] = float(timestampliststrings[key])
-                    del timestampliststrings
+                for key in timestampliststrings.keys():
+                    timestamplist[int(key)] = float(timestampliststrings[key])
+                del timestampliststrings
             except IOError:
                 print('')
             finally:
                 timestamp_json.close()
-            timestamp[bsUID] = 0
+            timestamplist[bsUID] = 0
             with open('timestamps.json', 'w') as timestamp_json:
                 json.dump(timestamplist, timestamp_json)
 os.system('sudo service tooniebox start')

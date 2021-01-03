@@ -8,14 +8,13 @@ fi
 cd ~
 
 # clone the github repo to the home directory of the executing user
-git clone https://github.com/Squeesyy/TooonieBox -b dev
-# TODO Remove this when doing the merge!
+git clone https://github.com/Squeesyy/TooonieBox
 
 # write current crontab to temporary file
 crontab -l > tempcrontab
 
 # add new crontask to the end of the file
-echo "00 09 * * * bash ~/TooonieBox/update.sh" >> tempcrontab
+echo "00 09 * * * bash /home/Pi/TooonieBox/TooonieBox/update.sh" >> tempcrontab
 
 # install new crontab
 crontab tempcrontab
