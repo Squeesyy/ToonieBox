@@ -34,7 +34,7 @@ Description=The TooonieBox service
 After=multi-user.target
 
 [Service]
-ExecStart=/usr/bin/python3 /root/TooonieBox/main.py
+ExecStart=/usr/bin/python3 /root/TooonieBox/ToonieBox/main.py
 
 [Install]
 WantedBy=multi-user.target" > tooniebox.service
