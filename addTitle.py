@@ -60,13 +60,13 @@ while True:
     # If we have the UID, continue
     if status == MIFAREReader.MI_OK:
 
-        bsUID = uid[0] << 24 + uid[1] << 16 + uid[2] << 8 + uid[3] << 0
+        bsUID = (uid[0] << 24) + (uid[1] << 16) + (uid[2] << 8) + (uid[3] << 0)
         print("Card read UID: %s" % bsUID)
         songlist[bsUID] = filename
-        with open('/home/Pi/TooonieBox/songs.json', 'w') as song_json:
+        with open('/home/Pi/ToonieBox/songs.json', 'w') as song_json:
             json.dump(songlist, song_json)
         message = 'Added file %s and associated it with the Chip UID %s' % (filename, bsUID)
-        os.system('git add /Toooniebox/Musik/%s' % filename)
+        os.system('git add /home/Pi/Tooniebox/Musik/%s' % filename)
         os.system('git commit -m \'%s\'' % message)
         os.system('git pull')
         os.system('git push')
@@ -74,7 +74,7 @@ while True:
         if bsUID in songlist:
             timestamplist = {}
             try:
-                timestamp_json = open('timestamps.json')
+                timestamp_json = open('/home/Pi/ToonieBox/timestamps.json')
                 timestampliststrings = json.load(timestamp_json)
 
                 for key in timestampliststrings.keys():
@@ -85,6 +85,6 @@ while True:
             finally:
                 timestamp_json.close()
             timestamplist[bsUID] = 0
-            with open('timestamps.json', 'w') as timestamp_json:
+            with open('/home/Pi/ToonieBox/timestamps.json', 'w') as timestamp_json:
                 json.dump(timestamplist, timestamp_json)
 os.system('sudo service tooniebox start')
