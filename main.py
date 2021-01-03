@@ -13,7 +13,7 @@ songlist = {}
 timestamplist = {}
 
 # This 'with open' handles opening and closing the file for us
-with open('/root/TooonieBox/ToonieBox/songs.json') as song_json:
+with open('/home/Pi/TooonieBox/songs.json') as song_json:
     songliststrings = json.load(song_json)
 
 for key in songliststrings.keys():
@@ -23,7 +23,7 @@ del songliststrings
 
 # This code will avoid problems when our timestamp JSON doesn't exist yet.
 try:
-    timestamp_json = open('/root/TooonieBox/ToonieBox/timestamps.json')
+    timestamp_json = open('/home/Pi/TooonieBox/timestamps.json')
     timestampliststrings = json.load(timestamp_json)
 
     for key in timestampliststrings.keys():
@@ -91,12 +91,13 @@ while continue_reading:
         # There, we simply shift our binary number to the left (essentially adding zeros on the right), and add them up, which results in one large number.
         # All of this is then stored in the variable bsUID (BitShifted UID)
 
-        bsUID = uid[0] << 24 + uid[1] << 16 + uid[2] << 8 + uid[3] << 0
+        bsUID = (uid[0] << 24) + (uid[1] << 16) + (uid[2] << 8) + (uid[3] << 0)
+        
         print("Card read UID: %s" % bsUID)
 
         # Es wird geguckt ob die gelesene ID dieselbe Zahlenfolge, wie ein Listeneintrag hat
         if bsUID in songlist:
-            pygame.mixer.music.load('root/TooonieBox/TooonieBox/Musik/%s' % songlist[bsUID])
+            pygame.mixer.music.load('/home/Pi/TooonieBox/Musik/%s' % songlist[bsUID])
             pygame.mixer.music.set_volume(0.1)  # setzten der Lautstärke
 
             # abspielend es Liedes mit ZEitpunkt, welher in timestampliste eingetragen ins
@@ -125,7 +126,7 @@ while continue_reading:
                         # print timestamp[0]
                         pygame.mixer.music.pause()
                         paused = True
-                        with open('timestamps.json', 'w') as timestamp_json:
+                        with open('/home/Pi/timestamps.json', 'w') as timestamp_json:
                             json.dump(timestamplist, timestamp_json)
                 else:
                     card_removed_counter = 5

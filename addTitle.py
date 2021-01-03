@@ -63,10 +63,10 @@ while True:
         bsUID = uid[0] << 24 + uid[1] << 16 + uid[2] << 8 + uid[3] << 0
         print("Card read UID: %s" % bsUID)
         songlist[bsUID] = filename
-        with open('songs.json', 'w') as song_json:
+        with open('/home/Pi/TooonieBox/songs.json', 'w') as song_json:
             json.dump(songlist, song_json)
         message = 'Added file %s and associated it with the Chip UID %s' % (filename, bsUID)
-        os.system('git add ./Toooniebox/Musik/%s' % filename)
+        os.system('git add /Toooniebox/Musik/%s' % filename)
         os.system('git commit -m \'%s\'' % message)
         os.system('git pull')
         os.system('git push')
