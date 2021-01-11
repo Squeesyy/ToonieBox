@@ -16,7 +16,8 @@ crontab -l > tempcrontab
 # add new crontask to the end of the file
 echo "00 09 * * * bash /home/pi/ToonieBox/update.sh
 00 09 * * * apt update -y
-00 10 * * * apt full-upgrade -y" >> tempcrontab
+00 10 * * * apt full-upgrade -y
+@reboot bash /home/pi/update.sh" >> tempcrontab
 
 # install new crontab
 crontab tempcrontab
@@ -35,9 +36,7 @@ Description=The ToonieBox service
 After=multi-user.target
 
 [Service]
-ExecStartPre= bash /home/pi/ToonieBox/update.sh
 ExecStart= python /home/pi/ToonieBox/main.py
-TimeoutStartSec=900
 
 [Install]
 WantedBy=multi-user.target" > tooniebox.service
