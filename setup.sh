@@ -14,7 +14,7 @@ git clone https://github.com/Squeesyy/TooonieBox
 crontab -l > tempcrontab
 
 # add new crontask to the end of the file
-echo "00 09 * * * bash /TooonieBox/TooonieBox/update.sh" >> tempcrontab
+echo "00 09 * * * bash /root/TooonieBox/TooonieBox/update.sh" >> tempcrontab
 
 # install new crontab
 crontab tempcrontab
@@ -33,7 +33,7 @@ Description=The TooonieBox service
 After=multi-user.target
 
 [Service]
-ExecStart=/usr/bin/python3 TooonieBox/TooonieBox/main.py
+ExecStart=/usr/bin/python3 /root/TooonieBox/TooonieBox/main.py
 
 [Install]
 WantedBy=multi-user.target" > tooniebox.service
