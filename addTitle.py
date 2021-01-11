@@ -66,10 +66,10 @@ while True:
         with open('/home/Pi/ToonieBox/songs.json', 'w') as song_json:
             json.dump(songlist, song_json)
         message = 'Added file %s and associated it with the Chip UID %s' % (filename, bsUID)
-        os.system('git add /home/Pi/Tooniebox/Musik/%s' % filename)
-        os.system('git commit -m \'%s\'' % message)
-        os.system('git pull')
-        os.system('git push')
+        #os.system('git add /home/Pi/Tooniebox/Musik/%s' % filename)
+        #os.system('git commit -m \'%s\'' % message)
+        #os.system('git pull')
+        #os.system('git push')
         print(message)
         if bsUID in songlist:
             timestamplist = {}
