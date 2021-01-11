@@ -8,13 +8,13 @@ fi
 cd /home/pi
 
 # clone the github repo to the home directory of the executing user
-git clone https://github.com/Squeesyy/TooonieBox
+git clone https://github.com/Squeesyy/ToonieBox
 
 # write current crontab to temporary file
 crontab -l > tempcrontab
 
 # add new crontask to the end of the file
-echo "00 09 * * * bash /home/pi/TooonieBox/TooonieBox/update.sh" >> tempcrontab
+echo "00 09 * * * bash /home/pi/TooonieBox/ToonieBox/update.sh" >> tempcrontab
 
 # install new crontab
 crontab tempcrontab
