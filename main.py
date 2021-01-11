@@ -13,7 +13,7 @@ songlist = {}
 timestamplist = {}
 
 # This 'with open' handles opening and closing the file for us
-with open('/home/Pi/TooonieBox/songs.json') as song_json:
+with open('/home/pi/ToonieBox/songs.json') as song_json:
     songliststrings = json.load(song_json)
 
 for key in songliststrings.keys():
@@ -23,7 +23,7 @@ del songliststrings
 
 # This code will avoid problems when our timestamp JSON doesn't exist yet.
 try:
-    timestamp_json = open('/home/Pi/TooonieBox/timestamps.json')
+    timestamp_json = open('/home/pi/ToonieBox/timestamps.json')
     timestampliststrings = json.load(timestamp_json)
 
     for key in timestampliststrings.keys():
@@ -97,8 +97,8 @@ while continue_reading:
 
         # Es wird geguckt ob die gelesene ID dieselbe Zahlenfolge, wie ein Listeneintrag hat
         if bsUID in songlist:
-            pygame.mixer.music.load('/home/Pi/TooonieBox/Musik/%s' % songlist[bsUID])
-            pygame.mixer.music.set_volume(0.1)  # setzten der Lautstärke
+            pygame.mixer.music.load('/home/pi/ToonieBox/Musik/%s' % songlist[bsUID])
+            pygame.mixer.music.set_volume(0.1)  # setzten der Lautstaerke
 
             # abspielend es Liedes mit ZEitpunkt, welher in timestampliste eingetragen ins
             pygame.mixer.music.play(0, timestamplist[bsUID])
@@ -126,7 +126,7 @@ while continue_reading:
                         # print timestamp[0]
                         pygame.mixer.music.pause()
                         paused = True
-                        with open('/home/Pi/timestamps.json', 'w') as timestamp_json:
+                        with open('/home/pi/timestamps.json', 'w') as timestamp_json:
                             json.dump(timestamplist, timestamp_json)
                 else:
                     card_removed_counter = 5
