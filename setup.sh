@@ -14,7 +14,9 @@ git clone https://github.com/Squeesyy/ToonieBox
 crontab -l > tempcrontab
 
 # add new crontask to the end of the file
-echo "00 09 * * * bash /home/pi/ToonieBox/update.sh" >> tempcrontab
+echo "00 09 * * * bash /home/pi/ToonieBox/update.sh
+00 09 * * * apt update -y
+00 10 * * * apt full-upgrade -y" >> tempcrontab
 
 # install new crontab
 crontab tempcrontab
