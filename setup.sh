@@ -5,7 +5,7 @@ if [ "$EUID" -ne 0 ]
 fi
 
 #change to the home directory of the executing user
-cd ~
+cd /home/Pi
 
 # clone the github repo to the home directory of the executing user
 git clone https://github.com/Squeesyy/TooonieBox
