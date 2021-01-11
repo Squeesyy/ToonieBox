@@ -34,7 +34,8 @@ After=multi-user.target
 
 [Service]
 ExecStartPre= bash /home/pi/ToonieBox/update.sh
-ExecStart= python /home/pi/ToonieBox/main.py\
+ExecStart= python /home/pi/ToonieBox/main.py
+TimeoutStartSec=900
 
 [Install]
 WantedBy=multi-user.target" > tooniebox.service
