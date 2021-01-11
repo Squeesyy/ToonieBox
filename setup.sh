@@ -33,7 +33,8 @@ Description=The ToonieBox service
 After=multi-user.target
 
 [Service]
-ExecStart=bash /home/pi/ToonieBox/update.sh; python /home/pi/ToonieBox/main.py\
+ExecStartPre= bash /home/pi/ToonieBox/update.sh
+ExecStart= python /home/pi/ToonieBox/main.py\
 
 [Install]
 WantedBy=multi-user.target" > tooniebox.service
