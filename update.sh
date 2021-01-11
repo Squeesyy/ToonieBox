@@ -8,5 +8,3 @@ git pull --no-commit
 sudo apt update
 
 sudo apt full-upgrade
-
-sudo reboot
