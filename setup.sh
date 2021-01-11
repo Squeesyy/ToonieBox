@@ -38,6 +38,8 @@ ExecStart=python /home/pi/ToonieBox/main.py
 [Install]
 WantedBy=multi-user.target" > tooniebox.service
 
+sudo systemctl enable tooniebox.service
+
 sudo apt-get install python3-rpi.gpio -y
 
 python3 -m pip install -U pygame
