@@ -5,6 +5,6 @@ cd /home/Pi/ToonieBox
 # use git to get the updates from the repo, if present.
 git pull --no-commit
 
-sudo apt update
+sudo apt update -y
 
-sudo apt full-upgrade
+sudo apt full-upgrade -y
