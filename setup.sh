@@ -29,7 +29,7 @@ cd /lib/systemd/system
 # Add the service file
 
 sudo echo "[Unit]
-Description=The TooonieBox service
+Description=The ToonieBox service
 After=multi-user.target
 
 [Service]
