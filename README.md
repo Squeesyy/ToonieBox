@@ -4,7 +4,7 @@ Dies ist eine einfache version einer Tooniebox.
 Benötigt wird ein Raspberry Pi mit Python 3, ein MFRC522, der per SPI angeschlossen ist, und einige RFID-Chips.
 Zum Installieren bitte den folgenden Kommandos ausführen:
 
-```wget -O - "https://raw.githubusercontent.com/Squeesyy/ToonieBox/main/TooonieBox/setup.sh" | sudo bash```
+```wget -O - "https://raw.githubusercontent.com/Squeesyy/ToonieBox/main/ToonieBox/setup.sh" | sudo bash```
 
 Das Skript wird alle benötigten Dependencies installieren, und automatische Updates mithilfe von cron durchführen. Diese werden um 9 Uhr morgens erfolgen, woraufhin der Pi einmal neustarten wird. 
 Dabei werden auch die aktuellsten Dateien aus dem GitHub Repo mithilfe von git heruntergeladen, was auch die Audiodateien beinhaltet.
